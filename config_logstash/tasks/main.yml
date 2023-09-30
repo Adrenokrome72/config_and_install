@@ -1,0 +1,10 @@
+---
+- name: Добавим /etc/logstash/conf.d/input.conf
+  template:
+    src: templates/input
+    dest: /etc/logstash/conf.d/input.conf
+
+- name: Добавим /etc/logstash/conf.d/output.conf
+  template:
+    src: templates/output
+    dest: /etc/logstash/conf.d/output.conf

@@ -1,0 +1,26 @@
+---
+- name: Install gnupg, gnupg1, gnupg2
+  apt:
+    pkg:
+      - gnupg
+      - gnupg1
+      - gnupg2
+
+- name: Добавим репозиторий
+  shell:
+    cmd: 'echo "deb http://elasticrepo.serveradmin.ru bullseye main" | tee /etc/apt/sources.list.d/elasticrepo.list'
+
+- name: Добавим ключи репозитория
+  shell:
+    cmd: 'wget -qO - http://elasticrepo.serveradmin.ru/elastic.asc | apt-key add -'
+
+- name: Установим Kibana
+  apt:
+    name: kibana
+    update_cache: yes  
+
+- name: Запустим Kibana
+  systemd:
+    name: kibana
+    enabled: yes
+    state: started

@@ -1,0 +1,21 @@
+---
+- name: Скачаем prometheus-nginxlog-exporter
+  apt:
+    deb: https://github.com/martin-helmich/prometheus-nginxlog-exporter/releases/download/v1.9.2/prometheus-nginxlog-exporter_1.9.2_linux_amd64.deb
+    state: present
+
+- name: Добавим /etc/prometheus-nginxlog-exporter.hcl
+  template:
+    src: templates/configyml
+    dest: /etc/prometheus-nginxlog-exporter.yml
+
+- name: Добавим /etc/systemd/system/prometheus-nginxlog-exporter.service
+  template:
+    src: templates/service
+    dest: /etc/systemd/system/prometheus-nginxlog-exporter.service
+
+- name: Запустим prometheus-nginxlog-exporter
+  systemd:
+    name: prometheus-nginxlog-exporter
+    state: started
+    enabled: yes

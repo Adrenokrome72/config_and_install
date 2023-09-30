@@ -1,0 +1,38 @@
+---
+
+- name: Install gnupg, gnupg1, gnupg2
+  apt:
+    pkg:
+      - gnupg
+      - gnupg1
+      - gnupg2
+
+- name: Добавим репозиторий
+  shell:
+    cmd: 'echo "deb http://elasticrepo.serveradmin.ru bullseye main" | tee /etc/apt/sources.list.d/elasticrepo.list'
+
+- name: Добавим ключи
+  shell:
+    cmd: 'wget -qO - http://elasticrepo.serveradmin.ru/elastic.asc | apt-key add -'
+
+- name: Установим Elasticsearch
+  apt:
+    name: elasticsearch
+    update_cache: yes  
+
+- name: Влючим Elasticsearch
+  systemd:
+    name: elasticsearch
+    enabled: yes
+    state: started
+
+- name: Установим Logstash
+  apt:
+    name: logstash
+    update_cache: yes  
+
+- name: Включим Logstash
+  systemd:
+    name: logstash
+    enabled: yes
+    state: started

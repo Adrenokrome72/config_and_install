@@ -1,0 +1,5 @@
+---
+- name: Добавим /etc/prometheus/prometheus.yml
+  template:
+    src: templates/prometheusyml
+    dest: /etc/prometheus/prometheus.yml
