@@ -1,5 +1,4 @@
 ---
-# tasks file for configure_filebeat
 - name: Добавим /etc/filebeat/filebeat.yml
   template:
     src: templates/filebeat
