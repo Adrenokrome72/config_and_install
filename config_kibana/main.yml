@@ -2,4 +2,4 @@
 # tasks file for config_kibana
 - name: change /etc/kibana/kibana.yml
   shell:
-    cmd: 'echo "server.host: 0.0.0.0\nelasticsearch.username: "kibana_system"\nelasticsearch.password: "12345678"\nelasticsearch.ssl.certificateAuthorities: [ "/etc/kibana/certs/http_ca.crt" ]\nelasticsearch.hosts: ["https://:9200"]\nserver.publicBaseUrl: "http://:5601/"" >> /etc/kibana/kibana.yml'
+    cmd: 'echo "server.host: 0.0.0.0\nelasticsearch.username: "kibana_system"\nelasticsearch.password: "Kibana555"\nelasticsearch.ssl.certificateAuthorities: [ "/etc/kibana/certs/http_ca.crt" ]\nelasticsearch.hosts: ["https://:9200"]\nserver.publicBaseUrl: "http://:5601/"" >> /etc/kibana/kibana.yml'

@@ -2,8 +2,8 @@ output {
         elasticsearch {
             hosts    => "https://localhost:9200"
             index    => "websrv-%{+YYYY.MM}"
-	    user => "elasticsearch"
-	    password => "12345678"
+	    user => "elastic"
+	    password => "Elastic555"
 	    cacert => "/etc/logstash/certs/http_ca.crt"
         }
 }
