@@ -24,7 +24,7 @@
       
   - name: "Устанавливаем Nginx"
     become: yes
-    shell: make && make install
+    shell: ./configure --sbin-path=/usr/sbin/nginx --conf-path=/etc/nginx/nginx.conf && make && make install
     args:
       chdir: /tmp/nginx-1.9.5
 
